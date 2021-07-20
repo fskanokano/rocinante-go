@@ -229,3 +229,19 @@ func main() {
 	}
 }
 ```
+
+#### 📖 CORS
+
+```go
+func main() {
+	r := rocinante.Default()
+	r.Use(cors.New(cors.Option{
+		AllowOrigins:     []string{"www.example.com"},
+		AllowMethods:     []string{"GET", "POST", "DELETE", "PUT"},
+		AllowHeaders:     []string{"Custom-Header"},
+		AllowCredentials: true,
+		ExposeHeaders:    []string{"Exposed-Header"},
+		MaxAge:           3600,
+	}))
+}
+```

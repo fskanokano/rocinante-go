@@ -1,8 +1,8 @@
 package cors
 
 import (
+	"github.com/fskanokano/rocinante-go"
 	"net/http"
-	"rocinante"
 )
 
 func New(option ...Option) rocinante.Handler {
@@ -16,7 +16,7 @@ func New(option ...Option) rocinante.Handler {
 		if origin == "" {
 			return
 		} else {
-			if opt.AllowOrigins != nil || opt.AllowOrigins[0] != "*"{
+			if opt.AllowOrigins != nil || opt.AllowOrigins[0] != "*" {
 				if !optValue.isAllowedOrigin(origin, opt.AllowOrigins) {
 					c.SetStatus(http.StatusForbidden)
 					c.Abort()
